@@ -5,8 +5,7 @@ puts "Wait there are not 10 things in that list. Let's fix that."
 stuff = ten_things.split(' ')
 more_stuff = ["Day", "Night", "Song", "Frisbee", "Corn", "Banana", "Girl", "Boy"]
 
-# Using maths to make sure there's 10 items
-
+# make sure there's 10 items
 while stuff.length != 10
   next_one = more_stuff.pop
   puts "Adding: #{next_one}"
@@ -18,8 +17,8 @@ puts "There we go: #{stuff}"
 
 puts "Let's do some things with stuff."
 
-puts stuff[1]
-puts stuff[-1]
-puts stuff.pop
-puts stuff.join(' ')
-puts stuff[3..5].join('#')
+puts stuff[1] # element at index 1, second position
+puts stuff[-1] # element at index (size-1), last position
+puts stuff.pop() # last position, remove from array as well
+puts stuff.join(' ') # string of all elements joined by " "
+puts stuff[3..5].join("#") # elements from index 3 -> 5, joined by "#"

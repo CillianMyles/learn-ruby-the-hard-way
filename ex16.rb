@@ -1,24 +1,19 @@
-# close -- Closes the file. Like File->Save.. in your editor.
-# read -- Reads the contents of the file. You can assign the result to a variable.
-# readline -- Reads just one line of a text file.
-# truncate -- Empties the file. Watch out if you care about the file.
-# write('stuff') -- Writes "stuff" to the file.
+file_name = ARGV.first
 
-filename = ARGV.first
-
-puts "We're going to erase #{filename}"
-puts "If you don't want that, hit CTRL-C (^C)."
+puts "We're going to erase #{file_name}"
+puts "If you don't want that, hit CTRL+C (^C)."
 puts "If you do want that, hit RETURN."
 
+# wait for input
 $stdin.gets
 
 puts "Opening the file..."
-target = open(filename, "w")
+target = open(file_name, 'w') 
 
 puts "Truncating the file. Goodbye!"
 target.truncate(0)
 
-puts "Not I'm going to ask you for three lines."
+puts "Now I'm going to ask you for three lines."
 
 print "line 1: "
 line1 = $stdin.gets.chomp
@@ -27,7 +22,7 @@ line2 = $stdin.gets.chomp
 print "line 3: "
 line3 = $stdin.gets.chomp
 
-puts "I'm going to write these to a file."
+puts "I'm going to write these to the file."
 
 target.write(line1)
 target.write("\n")

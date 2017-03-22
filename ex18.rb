@@ -1,25 +1,25 @@
-# accepts all arguments
+# this is like ARGV
 def print_two(*args)
   arg1, arg2 = args
   puts "arg1: #{arg1}, arg2: #{arg2}"
 end
 
-# two arguments
-def print_two_args(arg1, arg2)
+# no need for the *args
+def print_two_again(arg1, arg2)
   puts "arg1: #{arg1}, arg2: #{arg2}"
 end
 
-# one argument
+# this just takes one argument
 def print_one(arg1)
   puts "arg1: #{arg1}"
 end
 
-# no arguments
+# this one take no arguments
 def print_none()
-  puts "Got nothin'."
+  puts "I got nothin'."
 end
 
-print_two("Zedds", "Dead")
-print_two_args "Zedds", "Dead" # no parenthesis, same o/p
+print_two("Cillian", "Myles")
+print_two_again("Cillian", "Myles")
 print_one("First!")
 print_none

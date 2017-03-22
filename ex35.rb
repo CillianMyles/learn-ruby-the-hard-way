@@ -1,24 +1,19 @@
-def gold_room 
+def gold_room
   puts "This room is full of gold. How much do you take?"
 
   print "> "
-  choice = Integer(gets) rescue false
+  choice = $stdin.gets.chomp
 
-# user_num=Integer(gets) rescue false 
-# if user_num 
-#     # code 
-# end
-
-  if choice
+  # Regex check if number
+  if /\A\d+\z/.match(choice)
     how_much = choice.to_i
-  else
+  else 
     dead("Man, learn to type a number.")
   end
 
-  if how_much < 50 
-    puts "Nice, you're not greedy, you win!"
-    exit(0)
-  else 
+  if how_much < 50
+    win("Nice, you're not greedy, you win!")
+  else
     dead("You greedy bastard!")
   end
 end
@@ -30,38 +25,42 @@ def bear_room
   puts "How are you going to move the bear?"
   bear_moved = false
 
-  while true 
+  while true
     print "> "
     choice = $stdin.gets.chomp
 
     if choice == "take honey"
-      dead("The bear looks at you then slaps your face off.")
+      dead("The bear looks at you first then slaps your face off.")
     elsif choice == "taunt bear" && !bear_moved
       puts "The bear has moved from the door. You can go through it now."
       bear_moved = true
     elsif choice == "taunt bear" && bear_moved
       dead("The bear gets pissed off and chews your leg off.")
+    elsif choice == "open door" && !bear_moved
+      dead("The bear looks at you first then slaps your face off.")
     elsif choice == "open door" && bear_moved
       gold_room
+    else 
+      puts "I got no idea what that means."
     end
-  end
+  end   
 end
 
-def cthululu_room 
-  puts "Here you see the great evil Cthulhu."
+def cthulu_room
+  puts "Here you see the great evil Cthulu."
   puts "He, it, whatever stares at you and you go insane."
   puts "Do you flee for your life or eat your head?"
 
   print "> "
   choice = $stdin.gets.chomp
 
-  if choice.include? "flee"
+  if choice.include?("flee")
     start
-  elsif choice.include? "head"
+  elsif choice.include?("head")
     dead("Well that was tasty!")
-  else 
-    cthululu_room
-  end
+  else
+    cthulu_room
+  end    
 end
 
 def dead(why)
@@ -69,10 +68,15 @@ def dead(why)
   exit(0)
 end
 
+def win(message)
+  puts message, "Well done!"
+  exit(0)
+end
+
 def start
   puts "You are in a dark room."
-  puts "There is a door to your right and left."
-  puts "Which one do you take?"
+  puts "There are doors on your left and right."
+  puts "Which one do you choose?"
 
   print "> "
   choice = $stdin.gets.chomp
@@ -80,9 +84,9 @@ def start
   if choice == "left"
     bear_room
   elsif choice == "right"
-    cthululu_room
-  else 
-    dead("You stumble around the room until you die.")
+    cthulu_room
+  else
+    dead("You stumble around the room until you starve.")
   end
 end
 

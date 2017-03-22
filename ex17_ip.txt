@@ -1,3 +1,0 @@
-This is the input file. 
-This will be copied and should be visible in ex17_op,txt
-Last line.
