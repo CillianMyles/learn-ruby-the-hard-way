@@ -1,18 +1,3 @@
-# Gothons from Planet Percal #25
-
-
-## SCENE
-class Scene
-
-  def enter()
-    puts "This scene is not yet configured. Subclass it and implement enter()."
-    exit(1)
-  end
-
-end
-
-
-## ENGINE
 class Engine
 
   def initialize(scene_map)
@@ -31,11 +16,5 @@ class Engine
     # remember to print last scene
     current_scene.enter()
   end
-
-end
-
-
-## DEATH SCENE
-class Death < Scene
 
 end
