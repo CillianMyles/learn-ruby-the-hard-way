@@ -1,3 +1,5 @@
+require_relative '../scene'
+
 class Finished < Scene
 
   def enter

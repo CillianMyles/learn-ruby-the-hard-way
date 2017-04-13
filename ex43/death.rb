@@ -1,3 +1,5 @@
+require './scene'
+
 class Death < Scene
 
   @@quips = [

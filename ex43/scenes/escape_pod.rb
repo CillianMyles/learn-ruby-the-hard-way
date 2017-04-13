@@ -1,3 +1,5 @@
+require_relative '../scene'
+
 class EscapePod < Scene
 
   def enter
@@ -10,6 +12,9 @@ class EscapePod < Scene
     puts "do you take?"
 
     good_pod = rand(1..5)
+    if @debug 
+        puts "Pssst... the good pod is #{good_pod}" 
+    end   
     print "[pod #]> "
     guess = $stdin.gets.chomp.to_i
 
@@ -19,6 +24,7 @@ class EscapePod < Scene
       puts "implodes as the hull ruptures, crushing your body"
       puts "into jam jelly."
       return 'death'
+
     else
       puts "You jump into pod %s and hit the eject button." % guess
       puts "The pod easily slides out into space heading to"
@@ -26,9 +32,8 @@ class EscapePod < Scene
       puts "back and see your ship implode then explode like a"
       puts "bright star, taking out the Gothon ship at the same"
       puts "time.  You won!"
-
-
       return 'finished'
+
     end  
   end
 
