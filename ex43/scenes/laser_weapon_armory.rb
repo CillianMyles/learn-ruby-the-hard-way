@@ -18,7 +18,8 @@ class LaserWeaponArmory < Scene
     guess = $stdin.gets.chomp
     guesses = 0
 
-    while guess != code && guesses < 10
+    # want 10 guesses total, so 9 since we've guessed once already
+    while guess != code && guesses < 9
       puts "BZZZZEDDD!"
       guesses += 1
       print "[keypad]> "
